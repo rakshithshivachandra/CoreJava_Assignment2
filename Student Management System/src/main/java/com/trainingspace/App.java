@@ -36,7 +36,7 @@ public class App
                     displayAllStudents();
                     break;
                 case 3:
-                    searchStudents();
+                    searchStudent();
                     break;
                 case 4:
                     updateStudent();
@@ -59,13 +59,13 @@ public class App
                 case 10:
                     displayLinkedHashMapStudents();
                     break;
-                case 11:
+                case 0:
                     System.out.println("Exiting Program");
                     break;
                 default:
-                    System.out.println("Invalid choice - enter a number between 1 and 8");
+                    System.out.println("Invalid choice - enter a number between 0 and 10");
             }
-        }while (choice != 11);
+        }while (choice != 0);
 
     }
 
@@ -117,7 +117,7 @@ public class App
             return;
         }
 
-        if(studentExists(inputId)){
+        if(studentMap.containsKey(inputId)){
             System.out.println("Student ID already exists.");
             return;
         }
@@ -130,7 +130,7 @@ public class App
         int inputAge = sc.nextInt();
 
         if (inputAge <= 0 || inputAge >= 150){
-            System.out.println("Invalid Age");
+            System.out.println("Invalid Age.");
             return;
         }
 
@@ -157,22 +157,22 @@ public class App
             System.out.println("No Students to display");
             return;
         }
-        System.out.println("--------------------------------------------------");
-        System.out.printf("%-5s %-10s %-10s %-10s %-10s%n","ID", "Name", "Age", "Department", "Marks");
+        System.out.println("------------------------------------------------------------");
+        System.out.printf("%-10s %-10s %-10s %-15s %-10s%n","ID", "Name", "Age", "Department", "Marks");
 
-        System.out.println("--------------------------------------------------");
+        System.out.println("------------------------------------------------------------");
 
         for(Student temp: studentMap.values()){
-            System.out.printf("%-5d %-10s %-10d %-10s %-10.0f%n",temp.getStudentId(),
-                    temp.getstudentName(), temp.getAge(), temp.getDepartment(), temp.getMarks());
+            System.out.printf("%-10d %-10s %-10d %-15s %-10.1f%n",temp.getStudentId(),
+                    temp.getStudentName(), temp.getAge(), temp.getDepartment(), temp.getMarks());
         }
-        System.out.println("--------------------------------------------------");
+        System.out.println("------------------------------------------------------------");
     }
 
     /*
      * Method to search for an individual student
      * */
-    private static void searchStudents(){
+    private static void searchStudent(){
         if(studentMap.isEmpty()) {
             System.out.println("No Students to display");
             return;
@@ -183,11 +183,11 @@ public class App
         Student temp = studentMap.get(inputId);
 
         if (temp == null){
-            System.out.println("Student not found: ");
+            System.out.println("Student not found.");
             return;
         }
 
-        System.out.println("Student found.");
+        System.out.println("Student Found");
         temp.displayStudent();
     }
 
@@ -206,7 +206,7 @@ public class App
         Student temp = studentMap.get(inputID);
 
         if (temp == null){
-            System.out.println("Student not found: ");
+            System.out.println("Student not found.");
             return;
         }
 
@@ -218,7 +218,7 @@ public class App
         int inputAge = sc.nextInt();
 
         if (inputAge <= 0 || inputAge >= 150){
-            System.out.println("Invalid Age");
+            System.out.println("Invalid Age.");
             return;
         }
 
@@ -251,7 +251,7 @@ public class App
         Student temp = studentMap.get(inputID);
 
         if (temp == null){
-            System.out.println("Student not found: ");
+            System.out.println("Student not found.");
             return;
         }
 
@@ -262,20 +262,19 @@ public class App
     }
 
     /*
-     * Method for displaying student by subject
+     * Method for displaying student by department
      * */
     private static void displayStudentsByDepartment(){
+        sc.nextLine();
         String inputDepartment = readNonEmpty("Department: ");
         if (inputDepartment == null) return;
 
-        System.out.println("-----------------"+ inputDepartment + " Students -----------------");
-        System.out.printf("%-5s %-10s %-10s %-10s %-10s%n","ID", "Name", "Sub1", "Sub2", "Sub3");
-        System.out.println("--------------------------------------------------");
+        System.out.println("-------------"+ inputDepartment + " Students -------------");
 
         boolean results = false;
         for (Student temp: studentMap.values()){
             if (temp.getDepartment().equalsIgnoreCase(inputDepartment)){
-                System.out.printf("%-5d %-10s %-10s %-10.0f%n", temp.getStudentId(), temp.getstudentName(),
+                System.out.printf("%-10d %-10s %-10s %-10.1f%n", temp.getStudentId(), temp.getStudentName(),
                         temp.getDepartment(), temp.getMarks());
                 results = true;
             }
@@ -323,7 +322,7 @@ public class App
         System.out.println("=============================");
 
         for (Student temp: studentMap.values()){
-            System.out.println(temp.getStudentId() + " -> " + temp.getstudentName());
+            System.out.println(temp.getStudentId() + " -> " + temp.getStudentName());
         }
     }
 
@@ -336,16 +335,16 @@ public class App
             return;
         }
 
-        System.out.println("Enter Student ID: ");
+        System.out.print("Enter Student ID: ");
         int inputId = sc.nextInt();
         Student temp = studentMap.get(inputId);
 
         if (temp == null){
-            System.out.println("Student not found: ");
+            System.out.println("Student not found.");
             return;
         }
 
-        System.out.println("Student found");
+        System.out.println("Student Found");
         temp.displayStudent();
     }
 
@@ -358,12 +357,8 @@ public class App
             return;
         }
 
-        System.out.println("Insertion Order Maintained");
-        linkedStudentMap.forEach((Integer, Student) ->
-                System.out.println(Integer + "---->>>>" + Student.getstudentName()));
-
         for (Student temp: linkedStudentMap.values()){
-            System.out.println(temp.getStudentId() + " -> " + temp.studentName);
+            System.out.println(temp.getStudentId() + " -> " + temp.getStudentName());
         }
 
     }
@@ -382,18 +377,6 @@ public class App
             return null;
         }
         return inputValue;
-    }
-
-    /*
-     *  Method for validate is student record already present
-     * */
-    private static boolean studentExists(int inputId){
-        for(Student temp: studentMap.values()){
-            if(inputId == temp.getStudentId()) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /*

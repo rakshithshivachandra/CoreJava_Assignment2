@@ -2,11 +2,11 @@ package com.trainingspace;
 
 public class Student {
 
-    int studentId;
-    String studentName;
-    int age;
-    String department;
-    double marks;
+    private int studentId;
+    private String studentName;
+    private int age;
+    private String department;
+    private double marks;
 
     public Student(int studentId, String studentName, int age, String department, double marks) {
         this.studentId = studentId;
@@ -20,7 +20,7 @@ public class Student {
         return studentId;
     }
 
-    public String getstudentName() {
+    public String getStudentName() {
         return studentName;
     }
 
@@ -37,10 +37,10 @@ public class Student {
     }
 
     public void displayStudent(){
-        System.out.println("ID           : " + studentId);
-        System.out.println("Name         : " + studentName);
-        System.out.println("Age          : " + age);
-        System.out.println("Department   : " + department);
-        System.out.println("Marks        : " + marks);
+        System.out.println("ID           : " + getStudentId());
+        System.out.println("Name         : " + getStudentName());
+        System.out.println("Age          : " + getAge());
+        System.out.println("Department   : " + getDepartment());
+        System.out.println("Marks        : " + getMarks());
     }
 }
