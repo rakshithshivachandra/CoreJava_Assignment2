@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b89951dc-9fb1-4a65-9033-4a78d135aa20" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="b89951dc-9fb1-4a65-9033-4a78d135aa20" name="Changes" comment="Commit">
       <change beforePath="$PROJECT_DIR$/src/main/java/com/trainingspace/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trainingspace/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/trainingspace/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/trainingspace/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,5 +68,9 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit" />
   </component>
 </project>

@@ -4,12 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
 
-
-/**
- * Hello world!
- *
- */
-public class App 
+public class App
 {
     private static final Scanner sc = new Scanner(System.in);
     private static final HashMap<Integer, Student> studentMap = new HashMap<>();
